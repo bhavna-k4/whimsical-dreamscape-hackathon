@@ -3,8 +3,15 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-hackathon-purple via-hackathon-pink to-hackathon-blue">
-      <div className="absolute inset-0 bg-[url('/placeholder.svg')] opacity-10"></div>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
+      <div className="absolute inset-0">
+        {/* Stars effect */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at center, #ffffff 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+          opacity: 0.3,
+        }}></div>
+      </div>
       
       {/* Decorative Clouds */}
       <div className="absolute inset-0 pointer-events-none">
@@ -13,29 +20,56 @@ const HeroSection = () => {
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5 }}
-          className="absolute top-20 left-20 w-64 h-32 bg-[#E5DEFF] rounded-[100%] shadow-lg"
-        />
+          className="absolute top-20 left-20"
+        >
+          <div className="relative">
+            <div className="w-24 h-24 bg-[#E5DEFF] rounded-full absolute -left-12 shadow-lg"></div>
+            <div className="w-32 h-32 bg-[#E5DEFF] rounded-full absolute -left-6 -top-6 shadow-lg"></div>
+            <div className="w-28 h-28 bg-[#E5DEFF] rounded-full absolute left-8 -top-2 shadow-lg"></div>
+          </div>
+        </motion.div>
+
         {/* Soft Pink Cloud */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute top-40 right-32 w-72 h-36 bg-[#FFDEE2] rounded-[100%] shadow-lg"
-        />
+          className="absolute top-40 right-32"
+        >
+          <div className="relative">
+            <div className="w-28 h-28 bg-[#FFDEE2] rounded-full absolute -right-12 shadow-lg"></div>
+            <div className="w-36 h-36 bg-[#FFDEE2] rounded-full absolute -right-6 -top-6 shadow-lg"></div>
+            <div className="w-32 h-32 bg-[#FFDEE2] rounded-full absolute right-8 -top-2 shadow-lg"></div>
+          </div>
+        </motion.div>
+
         {/* Soft Blue Cloud */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="absolute bottom-32 left-1/4 w-80 h-40 bg-[#D3E4FD] rounded-[100%] shadow-lg"
-        />
+          className="absolute bottom-32 left-1/4"
+        >
+          <div className="relative">
+            <div className="w-32 h-32 bg-[#D3E4FD] rounded-full absolute -left-16 shadow-lg"></div>
+            <div className="w-40 h-40 bg-[#D3E4FD] rounded-full absolute -left-8 -top-8 shadow-lg"></div>
+            <div className="w-36 h-36 bg-[#D3E4FD] rounded-full absolute left-8 -top-4 shadow-lg"></div>
+          </div>
+        </motion.div>
+
         {/* Soft Peach Cloud */}
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.6 }}
-          className="absolute top-1/3 right-1/4 w-56 h-28 bg-[#FDE1D3] rounded-[100%] shadow-lg"
-        />
+          className="absolute top-1/3 right-1/4"
+        >
+          <div className="relative">
+            <div className="w-24 h-24 bg-[#FDE1D3] rounded-full absolute -right-12 shadow-lg"></div>
+            <div className="w-32 h-32 bg-[#FDE1D3] rounded-full absolute -right-6 -top-6 shadow-lg"></div>
+            <div className="w-28 h-28 bg-[#FDE1D3] rounded-full absolute right-8 -top-2 shadow-lg"></div>
+          </div>
+        </motion.div>
       </div>
       
       <div className="container mx-auto px-4 z-10">
