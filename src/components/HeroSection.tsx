@@ -6,6 +6,38 @@ const HeroSection = () => {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-hackathon-purple via-hackathon-pink to-hackathon-blue">
       <div className="absolute inset-0 bg-[url('/placeholder.svg')] opacity-10"></div>
       
+      {/* Decorative Clouds */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Soft Purple Cloud */}
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-20 left-20 w-64 h-32 bg-[#E5DEFF]/40 rounded-full blur-2xl"
+        />
+        {/* Soft Pink Cloud */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
+          className="absolute top-40 right-32 w-72 h-36 bg-[#FFDEE2]/40 rounded-full blur-2xl"
+        />
+        {/* Soft Blue Cloud */}
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.4 }}
+          className="absolute bottom-32 left-1/4 w-80 h-40 bg-[#D3E4FD]/40 rounded-full blur-2xl"
+        />
+        {/* Soft Peach Cloud */}
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.6 }}
+          className="absolute top-1/3 right-1/4 w-56 h-28 bg-[#FDE1D3]/40 rounded-full blur-2xl"
+        />
+      </div>
+      
       <div className="container mx-auto px-4 z-10">
         <div className="text-center">
           <motion.h1 
