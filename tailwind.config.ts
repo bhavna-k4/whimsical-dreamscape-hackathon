@@ -46,10 +46,16 @@ export default {
           "0%, 100%": { transform: "translateY(-10px)" },
           "50%": { transform: "translateY(10px)" },
         },
+        twinkle: {
+          "0%": { opacity: "0.3" },
+          "50%": { opacity: "0.8" },
+          "100%": { opacity: "0.5" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
         "float-delayed": "float-delayed 7s ease-in-out infinite",
+        twinkle: "twinkle 4s ease-in-out infinite",
       },
     },
   },

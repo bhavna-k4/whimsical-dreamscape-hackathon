@@ -6,11 +6,40 @@ const HeroSection = () => {
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
       <div className="absolute inset-0">
         {/* Stars effect */}
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at center, #ffffff 1px, transparent 1px)',
-          backgroundSize: '50px 50px',
-          opacity: 0.3,
-        }}></div>
+        <div 
+          className="absolute inset-0" 
+          style={{
+            background: `
+              radial-gradient(circle at 20% 30%, #ffffff 1px, transparent 1px),
+              radial-gradient(circle at 40% 70%, #ffffff 1.2px, transparent 1.2px),
+              radial-gradient(circle at 60% 20%, #ffffff 0.8px, transparent 0.8px),
+              radial-gradient(circle at 80% 50%, #ffffff 1px, transparent 1px),
+              radial-gradient(circle at 10% 60%, #ffffff 1.5px, transparent 1.5px),
+              radial-gradient(circle at 30% 90%, #ffffff 0.7px, transparent 0.7px),
+              radial-gradient(circle at 70% 40%, #ffffff 1.3px, transparent 1.3px),
+              radial-gradient(circle at 90% 80%, #ffffff 0.9px, transparent 0.9px)
+            `,
+            backgroundSize: '200px 200px',
+            animation: 'twinkle 4s infinite alternate',
+          }}
+        ></div>
+        
+        {/* Additional twinkling layer */}
+        <div 
+          className="absolute inset-0" 
+          style={{
+            background: `
+              radial-gradient(circle at 15% 25%, #ffffff 0.8px, transparent 0.8px),
+              radial-gradient(circle at 35% 65%, #ffffff 1px, transparent 1px),
+              radial-gradient(circle at 55% 15%, #ffffff 1.1px, transparent 1.1px),
+              radial-gradient(circle at 75% 45%, #ffffff 0.7px, transparent 0.7px),
+              radial-gradient(circle at 95% 75%, #ffffff 1.2px, transparent 1.2px)
+            `,
+            backgroundSize: '150px 150px',
+            animation: 'twinkle 3s infinite alternate-reverse',
+            opacity: 0.7,
+          }}
+        ></div>
       </div>
       
       {/* Decorative Clouds */}
