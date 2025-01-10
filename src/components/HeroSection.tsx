@@ -13,28 +13,28 @@ const HeroSection = () => {
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5 }}
-          className="absolute top-20 left-20 w-64 h-32 bg-[#E5DEFF]/40 rounded-full blur-2xl"
+          className="absolute top-20 left-20 w-64 h-32 bg-[#E5DEFF] rounded-[100%] shadow-lg"
         />
         {/* Soft Pink Cloud */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute top-40 right-32 w-72 h-36 bg-[#FFDEE2]/40 rounded-full blur-2xl"
+          className="absolute top-40 right-32 w-72 h-36 bg-[#FFDEE2] rounded-[100%] shadow-lg"
         />
         {/* Soft Blue Cloud */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="absolute bottom-32 left-1/4 w-80 h-40 bg-[#D3E4FD]/40 rounded-full blur-2xl"
+          className="absolute bottom-32 left-1/4 w-80 h-40 bg-[#D3E4FD] rounded-[100%] shadow-lg"
         />
         {/* Soft Peach Cloud */}
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.6 }}
-          className="absolute top-1/3 right-1/4 w-56 h-28 bg-[#FDE1D3]/40 rounded-full blur-2xl"
+          className="absolute top-1/3 right-1/4 w-56 h-28 bg-[#FDE1D3] rounded-[100%] shadow-lg"
         />
       </div>
       
