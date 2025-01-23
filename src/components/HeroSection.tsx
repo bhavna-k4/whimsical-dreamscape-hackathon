@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
-      <div className="absolute inset-0">
-        {/* Stars effect */}
+      {/* Stars background */}
         <div 
           className="absolute inset-0" 
           style={{
@@ -40,15 +39,14 @@ const HeroSection = () => {
             opacity: 0.7,
           }}
         ></div>
-      </div>
       
       {/* Decorative Clouds */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Soft Purple Cloud */}
+        {/* Left Side Clouds */}
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
+          initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute top-20 left-20"
         >
           <div className="relative">
@@ -59,11 +57,24 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Soft Pink Cloud */}
+        {/* Additional Left Side Small Clouds */}
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
+          initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.2 }}
+          transition={{ duration: 1.8, delay: 0.2, ease: "easeOut" }}
+          className="absolute top-48 left-48"
+        >
+          <div className="relative">
+            <div className="w-16 h-16 bg-[#E5DEFF]/60 rounded-full absolute -left-8 blur-sm"></div>
+            <div className="w-20 h-20 bg-[#E5DEFF]/50 rounded-full absolute -left-4 -top-4 blur-sm"></div>
+          </div>
+        </motion.div>
+
+        {/* Right Side Clouds */}
+        <motion.div
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
           className="absolute top-40 right-32"
         >
           <div className="relative">
@@ -74,11 +85,24 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Soft Blue Cloud */}
+        {/* Additional Right Side Small Clouds */}
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.8, delay: 0.4, ease: "easeOut" }}
+          className="absolute top-24 right-64"
+        >
+          <div className="relative">
+            <div className="w-20 h-20 bg-[#FFDEE2]/60 rounded-full absolute -right-8 blur-sm"></div>
+            <div className="w-24 h-24 bg-[#FFDEE2]/50 rounded-full absolute -right-4 -top-4 blur-sm"></div>
+          </div>
+        </motion.div>
+
+        {/* Bottom Clouds */}
+        <motion.div
+          initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.4 }}
+          transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
           className="absolute bottom-32 left-1/4"
         >
           <div className="relative">
@@ -89,11 +113,24 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Soft Peach Cloud */}
+        {/* Additional Bottom Small Clouds */}
         <motion.div
-          initial={{ y: -100, opacity: 0 }}
+          initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.6 }}
+          transition={{ duration: 1.8, delay: 0.6, ease: "easeOut" }}
+          className="absolute bottom-48 left-1/3"
+        >
+          <div className="relative">
+            <div className="w-24 h-24 bg-[#D3E4FD]/60 rounded-full absolute -left-12 blur-sm"></div>
+            <div className="w-28 h-28 bg-[#D3E4FD]/50 rounded-full absolute -left-6 -top-6 blur-sm"></div>
+          </div>
+        </motion.div>
+
+        {/* Top Center Clouds */}
+        <motion.div
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
           className="absolute top-1/3 right-1/4"
         >
           <div className="relative">
@@ -101,6 +138,19 @@ const HeroSection = () => {
             <div className="w-32 h-32 bg-[#FDE1D3]/60 rounded-full absolute -right-6 -top-6 blur-sm"></div>
             <div className="w-28 h-28 bg-[#FDE1D3]/65 rounded-full absolute right-8 -top-2 blur-sm"></div>
             <div className="w-20 h-20 bg-[#FDE1D3]/75 rounded-full absolute right-4 top-4 blur-sm"></div>
+          </div>
+        </motion.div>
+
+        {/* Additional Top Center Small Clouds */}
+        <motion.div
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1.8, delay: 0.8, ease: "easeOut" }}
+          className="absolute top-1/4 right-1/3"
+        >
+          <div className="relative">
+            <div className="w-20 h-20 bg-[#FDE1D3]/60 rounded-full absolute -right-10 blur-sm"></div>
+            <div className="w-24 h-24 bg-[#FDE1D3]/50 rounded-full absolute -right-5 -top-5 blur-sm"></div>
           </div>
         </motion.div>
       </div>
