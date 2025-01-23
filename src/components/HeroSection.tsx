@@ -50,23 +50,10 @@ const HeroSection = () => {
           className="absolute top-20 left-20"
         >
           <div className="relative">
-            <div className="w-24 h-24 bg-[#E5DEFF]/70 rounded-full absolute -left-12 blur-sm"></div>
-            <div className="w-32 h-32 bg-[#E5DEFF]/60 rounded-full absolute -left-6 -top-6 blur-sm"></div>
-            <div className="w-28 h-28 bg-[#E5DEFF]/65 rounded-full absolute left-8 -top-2 blur-sm"></div>
-            <div className="w-20 h-20 bg-[#E5DEFF]/75 rounded-full absolute left-4 top-4 blur-sm"></div>
-          </div>
-        </motion.div>
-
-        {/* Additional Left Side Small Clouds */}
-        <motion.div
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.8, delay: 0.2, ease: "easeOut" }}
-          className="absolute top-48 left-48"
-        >
-          <div className="relative">
-            <div className="w-16 h-16 bg-[#E5DEFF]/60 rounded-full absolute -left-8 blur-sm"></div>
-            <div className="w-20 h-20 bg-[#E5DEFF]/50 rounded-full absolute -left-4 -top-4 blur-sm"></div>
+            <div className="w-32 h-32 bg-gradient-to-br from-[#ffffff]/80 via-[#E5DEFF]/60 to-[#ffffff]/70 rounded-full absolute -left-12 blur-[2px] mix-blend-screen"></div>
+            <div className="w-40 h-40 bg-gradient-to-tr from-[#ffffff]/90 via-[#E5DEFF]/70 to-[#ffffff]/80 rounded-full absolute -left-6 -top-6 blur-[3px] mix-blend-screen"></div>
+            <div className="w-36 h-36 bg-gradient-to-bl from-[#ffffff]/85 via-[#E5DEFF]/65 to-[#ffffff]/75 rounded-full absolute left-8 -top-2 blur-[2.5px] mix-blend-screen"></div>
+            <div className="w-28 h-28 bg-gradient-to-tl from-[#ffffff]/95 via-[#E5DEFF]/75 to-[#ffffff]/85 rounded-full absolute left-4 top-4 blur-[1.5px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
@@ -78,27 +65,14 @@ const HeroSection = () => {
           className="absolute top-40 right-32"
         >
           <div className="relative">
-            <div className="w-28 h-28 bg-[#FFDEE2]/70 rounded-full absolute -right-12 blur-sm"></div>
-            <div className="w-36 h-36 bg-[#FFDEE2]/60 rounded-full absolute -right-6 -top-6 blur-sm"></div>
-            <div className="w-32 h-32 bg-[#FFDEE2]/65 rounded-full absolute right-8 -top-2 blur-sm"></div>
-            <div className="w-24 h-24 bg-[#FFDEE2]/75 rounded-full absolute right-4 top-4 blur-sm"></div>
+            <div className="w-36 h-36 bg-gradient-to-br from-[#ffffff]/85 via-[#FFDEE2]/65 to-[#ffffff]/75 rounded-full absolute -right-12 blur-[2px] mix-blend-screen"></div>
+            <div className="w-44 h-44 bg-gradient-to-tr from-[#ffffff]/90 via-[#FFDEE2]/70 to-[#ffffff]/80 rounded-full absolute -right-6 -top-6 blur-[3px] mix-blend-screen"></div>
+            <div className="w-40 h-40 bg-gradient-to-bl from-[#ffffff]/85 via-[#FFDEE2]/65 to-[#ffffff]/75 rounded-full absolute right-8 -top-2 blur-[2.5px] mix-blend-screen"></div>
+            <div className="w-32 h-32 bg-gradient-to-tl from-[#ffffff]/95 via-[#FFDEE2]/75 to-[#ffffff]/85 rounded-full absolute right-4 top-4 blur-[1.5px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
-        {/* Additional Right Side Small Clouds */}
-        <motion.div
-          initial={{ x: 200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.8, delay: 0.4, ease: "easeOut" }}
-          className="absolute top-24 right-64"
-        >
-          <div className="relative">
-            <div className="w-20 h-20 bg-[#FFDEE2]/60 rounded-full absolute -right-8 blur-sm"></div>
-            <div className="w-24 h-24 bg-[#FFDEE2]/50 rounded-full absolute -right-4 -top-4 blur-sm"></div>
-          </div>
-        </motion.div>
-
-        {/* Bottom Clouds */}
+        {/* Bottom Clouds - Enhanced and Added More */}
         <motion.div
           initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -106,23 +80,38 @@ const HeroSection = () => {
           className="absolute bottom-32 left-1/4"
         >
           <div className="relative">
-            <div className="w-32 h-32 bg-[#D3E4FD]/70 rounded-full absolute -left-16 blur-sm"></div>
-            <div className="w-40 h-40 bg-[#D3E4FD]/60 rounded-full absolute -left-8 -top-8 blur-sm"></div>
-            <div className="w-36 h-36 bg-[#D3E4FD]/65 rounded-full absolute left-8 -top-4 blur-sm"></div>
-            <div className="w-28 h-28 bg-[#D3E4FD]/75 rounded-full absolute left-4 top-4 blur-sm"></div>
+            <div className="w-48 h-48 bg-gradient-to-br from-[#ffffff]/90 via-[#D3E4FD]/70 to-[#ffffff]/80 rounded-full absolute -left-16 blur-[3px] mix-blend-screen"></div>
+            <div className="w-56 h-56 bg-gradient-to-tr from-[#ffffff]/85 via-[#D3E4FD]/65 to-[#ffffff]/75 rounded-full absolute -left-8 -top-8 blur-[4px] mix-blend-screen"></div>
+            <div className="w-52 h-52 bg-gradient-to-bl from-[#ffffff]/95 via-[#D3E4FD]/75 to-[#ffffff]/85 rounded-full absolute left-8 -top-4 blur-[3.5px] mix-blend-screen"></div>
+            <div className="w-44 h-44 bg-gradient-to-tl from-[#ffffff]/90 via-[#D3E4FD]/70 to-[#ffffff]/80 rounded-full absolute left-4 top-4 blur-[2.5px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
-        {/* Additional Bottom Small Clouds */}
+        {/* Additional Bottom Clouds */}
         <motion.div
           initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.8, delay: 0.6, ease: "easeOut" }}
-          className="absolute bottom-48 left-1/3"
+          className="absolute bottom-48 right-1/3"
         >
           <div className="relative">
-            <div className="w-24 h-24 bg-[#D3E4FD]/60 rounded-full absolute -left-12 blur-sm"></div>
-            <div className="w-28 h-28 bg-[#D3E4FD]/50 rounded-full absolute -left-6 -top-6 blur-sm"></div>
+            <div className="w-40 h-40 bg-gradient-to-br from-[#ffffff]/85 via-[#E5DEFF]/65 to-[#ffffff]/75 rounded-full absolute -right-12 blur-[2.5px] mix-blend-screen"></div>
+            <div className="w-48 h-48 bg-gradient-to-tr from-[#ffffff]/90 via-[#E5DEFF]/70 to-[#ffffff]/80 rounded-full absolute -right-6 -top-6 blur-[3px] mix-blend-screen"></div>
+            <div className="w-44 h-44 bg-gradient-to-bl from-[#ffffff]/85 via-[#E5DEFF]/65 to-[#ffffff]/75 rounded-full absolute right-8 -top-2 blur-[2.5px] mix-blend-screen"></div>
+          </div>
+        </motion.div>
+
+        {/* New Bottom Center Clouds */}
+        <motion.div
+          initial={{ y: 200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
+          className="absolute bottom-24 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="relative">
+            <div className="w-52 h-52 bg-gradient-to-br from-[#ffffff]/90 via-[#D3E4FD]/70 to-[#ffffff]/80 rounded-full absolute -left-16 blur-[3px] mix-blend-screen"></div>
+            <div className="w-60 h-60 bg-gradient-to-tr from-[#ffffff]/85 via-[#D3E4FD]/65 to-[#ffffff]/75 rounded-full absolute -left-8 -top-8 blur-[4px] mix-blend-screen"></div>
+            <div className="w-56 h-56 bg-gradient-to-bl from-[#ffffff]/95 via-[#D3E4FD]/75 to-[#ffffff]/85 rounded-full absolute left-8 -top-4 blur-[3.5px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
