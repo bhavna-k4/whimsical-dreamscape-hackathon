@@ -135,13 +135,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="animate-float absolute top-1/4 left-1/4 w-32 h-32 bg-hackathon-lightPurple/20 rounded-full blur-xl"></div>
-        <div className="animate-float-delayed absolute bottom-1/4 right-1/4 w-40 h-40 bg-hackathon-pink/20 rounded-full blur-xl"></div>
-        <div className="animate-float absolute top-1/2 right-1/3 w-24 h-24 bg-hackathon-blue/20 rounded-full blur-xl"></div>
-      </div>
     </div>
   );
 };
