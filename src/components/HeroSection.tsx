@@ -52,9 +52,10 @@ const HeroSection = () => {
           className="absolute top-20 left-20"
         >
           <div className="relative">
-            <div className="w-24 h-24 bg-[#E5DEFF] rounded-full absolute -left-12 shadow-lg"></div>
-            <div className="w-32 h-32 bg-[#E5DEFF] rounded-full absolute -left-6 -top-6 shadow-lg"></div>
-            <div className="w-28 h-28 bg-[#E5DEFF] rounded-full absolute left-8 -top-2 shadow-lg"></div>
+            <div className="w-24 h-24 bg-[#E5DEFF]/70 rounded-full absolute -left-12 blur-sm"></div>
+            <div className="w-32 h-32 bg-[#E5DEFF]/60 rounded-full absolute -left-6 -top-6 blur-sm"></div>
+            <div className="w-28 h-28 bg-[#E5DEFF]/65 rounded-full absolute left-8 -top-2 blur-sm"></div>
+            <div className="w-20 h-20 bg-[#E5DEFF]/75 rounded-full absolute left-4 top-4 blur-sm"></div>
           </div>
         </motion.div>
 
@@ -66,9 +67,10 @@ const HeroSection = () => {
           className="absolute top-40 right-32"
         >
           <div className="relative">
-            <div className="w-28 h-28 bg-[#FFDEE2] rounded-full absolute -right-12 shadow-lg"></div>
-            <div className="w-36 h-36 bg-[#FFDEE2] rounded-full absolute -right-6 -top-6 shadow-lg"></div>
-            <div className="w-32 h-32 bg-[#FFDEE2] rounded-full absolute right-8 -top-2 shadow-lg"></div>
+            <div className="w-28 h-28 bg-[#FFDEE2]/70 rounded-full absolute -right-12 blur-sm"></div>
+            <div className="w-36 h-36 bg-[#FFDEE2]/60 rounded-full absolute -right-6 -top-6 blur-sm"></div>
+            <div className="w-32 h-32 bg-[#FFDEE2]/65 rounded-full absolute right-8 -top-2 blur-sm"></div>
+            <div className="w-24 h-24 bg-[#FFDEE2]/75 rounded-full absolute right-4 top-4 blur-sm"></div>
           </div>
         </motion.div>
 
@@ -80,9 +82,10 @@ const HeroSection = () => {
           className="absolute bottom-32 left-1/4"
         >
           <div className="relative">
-            <div className="w-32 h-32 bg-[#D3E4FD] rounded-full absolute -left-16 shadow-lg"></div>
-            <div className="w-40 h-40 bg-[#D3E4FD] rounded-full absolute -left-8 -top-8 shadow-lg"></div>
-            <div className="w-36 h-36 bg-[#D3E4FD] rounded-full absolute left-8 -top-4 shadow-lg"></div>
+            <div className="w-32 h-32 bg-[#D3E4FD]/70 rounded-full absolute -left-16 blur-sm"></div>
+            <div className="w-40 h-40 bg-[#D3E4FD]/60 rounded-full absolute -left-8 -top-8 blur-sm"></div>
+            <div className="w-36 h-36 bg-[#D3E4FD]/65 rounded-full absolute left-8 -top-4 blur-sm"></div>
+            <div className="w-28 h-28 bg-[#D3E4FD]/75 rounded-full absolute left-4 top-4 blur-sm"></div>
           </div>
         </motion.div>
 
@@ -94,9 +97,10 @@ const HeroSection = () => {
           className="absolute top-1/3 right-1/4"
         >
           <div className="relative">
-            <div className="w-24 h-24 bg-[#FDE1D3] rounded-full absolute -right-12 shadow-lg"></div>
-            <div className="w-32 h-32 bg-[#FDE1D3] rounded-full absolute -right-6 -top-6 shadow-lg"></div>
-            <div className="w-28 h-28 bg-[#FDE1D3] rounded-full absolute right-8 -top-2 shadow-lg"></div>
+            <div className="w-24 h-24 bg-[#FDE1D3]/70 rounded-full absolute -right-12 blur-sm"></div>
+            <div className="w-32 h-32 bg-[#FDE1D3]/60 rounded-full absolute -right-6 -top-6 blur-sm"></div>
+            <div className="w-28 h-28 bg-[#FDE1D3]/65 rounded-full absolute right-8 -top-2 blur-sm"></div>
+            <div className="w-20 h-20 bg-[#FDE1D3]/75 rounded-full absolute right-4 top-4 blur-sm"></div>
           </div>
         </motion.div>
       </div>
