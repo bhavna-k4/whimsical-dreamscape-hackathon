@@ -45,21 +45,85 @@ const HeroSection = () => {
         {/* Left Cover Cloud */}
         <motion.div 
           initial={{ x: 0, opacity: 1 }}
-          animate={isLoaded ? { x: "-100%", opacity: 0 } : { x: 0, opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-          className="fixed inset-0 w-[100%] h-screen z-30"
+          animate={isLoaded ? { x: "-120%", opacity: 0 } : { x: 0, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          className="fixed inset-0 w-[120%] h-screen z-30"
         >
-          <div className="w-full h-full bg-gradient-to-r from-[#FFDEE2] via-[#E5DEFF]/80 to-transparent blur-xl"></div>
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFDEE2] via-[#E5DEFF]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={`left-cloud-${i}`}
+                  className="absolute"
+                  style={{
+                    top: `${Math.random() * 100}%`,
+                    left: `${Math.random() * 100}%`,
+                    width: `${Math.random() * 40 + 20}vh`,
+                    height: `${Math.random() * 40 + 20}vh`,
+                  }}
+                >
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#E5DEFF] to-transparent blur-[8px] mix-blend-screen"></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Right Cover Cloud */}
         <motion.div 
           initial={{ x: 0, opacity: 1 }}
-          animate={isLoaded ? { x: "100%", opacity: 0 } : { x: 0, opacity: 1 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-          className="fixed inset-0 w-[100%] h-screen z-30"
+          animate={isLoaded ? { x: "120%", opacity: 0 } : { x: 0, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          className="fixed inset-0 w-[120%] h-screen z-30"
         >
-          <div className="w-full h-full bg-gradient-to-l from-[#D6BCFA] via-[#FFDEE2]/80 to-transparent blur-xl"></div>
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 bg-gradient-to-l from-[#D6BCFA] via-[#FFDEE2]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={`right-cloud-${i}`}
+                  className="absolute"
+                  style={{
+                    top: `${Math.random() * 100}%`,
+                    right: `${Math.random() * 100}%`,
+                    width: `${Math.random() * 40 + 20}vh`,
+                    height: `${Math.random() * 40 + 20}vh`,
+                  }}
+                >
+                  <div className="w-full h-full rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent blur-[8px] mix-blend-screen"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Top Cover Cloud */}
+        <motion.div 
+          initial={{ y: 0, opacity: 1 }}
+          animate={isLoaded ? { y: "-120%", opacity: 0 } : { y: 0, opacity: 1 }}
+          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          className="fixed inset-0 w-screen h-[120%] z-30"
+        >
+          <div className="relative w-full h-full">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0">
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={`top-cloud-${i}`}
+                  className="absolute"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    width: `${Math.random() * 40 + 20}vh`,
+                    height: `${Math.random() * 40 + 20}vh`,
+                  }}
+                >
+                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2] to-transparent blur-[8px] mix-blend-screen"></div>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </AnimatePresence>
 
@@ -70,7 +134,7 @@ const HeroSection = () => {
           style={{ x: leftX }}
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 2 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 2.5 }}
           className="absolute left-[-10%] top-[20%] flex gap-8"
         >
           <div className="cloud-group">
@@ -130,7 +194,7 @@ const HeroSection = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.5 }}
+        transition={{ duration: 1, delay: 3 }}
         className="container mx-auto px-4 z-10"
       >
         <div className="text-center">
