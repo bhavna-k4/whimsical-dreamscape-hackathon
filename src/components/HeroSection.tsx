@@ -1,18 +1,22 @@
 import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const HeroSection = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Create different movement speeds for cloud layers
   const leftX = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const rightX = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const centerY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
@@ -35,75 +39,86 @@ const HeroSection = () => {
         }}
       ></div>
       
-      {/* Parallax Cloud Layers */}
+      {/* Initial Cloud Cover */}
+      <AnimatePresence>
+        {/* Left Cover Cloud */}
+        <motion.div 
+          initial={{ x: 0, opacity: 1 }}
+          animate={isLoaded ? { x: "-100%", opacity: 0 } : { x: 0, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+          className="fixed inset-0 w-[100%] h-screen z-30"
+        >
+          <div className="w-full h-full bg-gradient-to-r from-white/95 via-white/80 to-transparent blur-xl"></div>
+        </motion.div>
+
+        {/* Right Cover Cloud */}
+        <motion.div 
+          initial={{ x: 0, opacity: 1 }}
+          animate={isLoaded ? { x: "100%", opacity: 0 } : { x: 0, opacity: 1 }}
+          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+          className="fixed inset-0 w-[100%] h-screen z-30"
+        >
+          <div className="w-full h-full bg-gradient-to-l from-white/95 via-white/80 to-transparent blur-xl"></div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Floating Clouds */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Left Floating Cloud Group */}
+        {/* Left Side Cloud Group */}
         <motion.div 
           style={{ x: leftX }}
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute left-[-10%] top-1/4"
+          transition={{ duration: 2, ease: "easeOut", delay: 2 }}
+          className="absolute left-[-20%] top-0 h-full"
         >
-          <div className="relative">
-            <div className="w-48 h-48 bg-gradient-to-br from-white/90 via-white/40 to-transparent rounded-full absolute blur-[3px] mix-blend-screen"></div>
-            <div className="w-56 h-56 bg-gradient-to-br from-white/80 via-white/30 to-transparent rounded-full absolute -left-8 -top-8 blur-[4px] mix-blend-screen"></div>
-            <div className="w-40 h-40 bg-gradient-to-br from-white/70 via-white/40 to-transparent rounded-full absolute left-4 top-4 blur-[2px] mix-blend-screen"></div>
+          <div className="relative h-full w-[50vw]">
+            <div className="w-full h-full bg-gradient-to-r from-white/60 via-white/30 to-transparent absolute blur-[30px] mix-blend-screen"></div>
+            <div className="w-[80%] h-full bg-gradient-to-r from-white/50 via-white/25 to-transparent absolute left-[10%] blur-[40px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
-        {/* Right Floating Cloud Group */}
+        {/* Right Side Cloud Group */}
         <motion.div 
           style={{ x: rightX }}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-          className="absolute right-[-10%] top-1/3"
+          transition={{ duration: 2, ease: "easeOut", delay: 2 }}
+          className="absolute right-[-20%] top-0 h-full"
         >
-          <div className="relative">
-            <div className="w-52 h-52 bg-gradient-to-bl from-white/90 via-white/40 to-transparent rounded-full absolute blur-[3px] mix-blend-screen"></div>
-            <div className="w-60 h-60 bg-gradient-to-bl from-white/80 via-white/30 to-transparent rounded-full absolute -right-8 -top-8 blur-[4px] mix-blend-screen"></div>
-            <div className="w-44 h-44 bg-gradient-to-bl from-white/70 via-white/40 to-transparent rounded-full absolute right-4 top-4 blur-[2px] mix-blend-screen"></div>
+          <div className="relative h-full w-[50vw]">
+            <div className="w-full h-full bg-gradient-to-l from-white/60 via-white/30 to-transparent absolute blur-[30px] mix-blend-screen"></div>
+            <div className="w-[80%] h-full bg-gradient-to-l from-white/50 via-white/25 to-transparent absolute right-[10%] blur-[40px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
-        {/* Center Bottom Cloud Group */}
+        {/* Center Cloud */}
         <motion.div 
           style={{ y: centerY }}
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
-          className="absolute left-1/2 bottom-[-10%] transform -translate-x-1/2"
+          transition={{ duration: 2, ease: "easeOut", delay: 2.2 }}
+          className="absolute left-1/2 bottom-[-20%] transform -translate-x-1/2"
         >
           <div className="relative">
-            <div className="w-64 h-64 bg-gradient-to-t from-white/90 via-white/40 to-transparent rounded-full absolute blur-[3px] mix-blend-screen"></div>
-            <div className="w-72 h-72 bg-gradient-to-t from-white/80 via-white/30 to-transparent rounded-full absolute -left-8 -top-8 blur-[4px] mix-blend-screen"></div>
-            <div className="w-56 h-56 bg-gradient-to-t from-white/70 via-white/40 to-transparent rounded-full absolute left-4 top-4 blur-[2px] mix-blend-screen"></div>
-          </div>
-        </motion.div>
-
-        {/* Top Cloud Group */}
-        <motion.div 
-          style={{ y: centerY }}
-          initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
-          className="absolute left-1/4 top-[-10%]"
-        >
-          <div className="relative">
-            <div className="w-56 h-56 bg-gradient-to-b from-white/90 via-white/40 to-transparent rounded-full absolute blur-[3px] mix-blend-screen"></div>
-            <div className="w-64 h-64 bg-gradient-to-b from-white/80 via-white/30 to-transparent rounded-full absolute -left-8 -top-8 blur-[4px] mix-blend-screen"></div>
-            <div className="w-48 h-48 bg-gradient-to-b from-white/70 via-white/40 to-transparent rounded-full absolute left-4 top-4 blur-[2px] mix-blend-screen"></div>
+            <div className="w-[80vw] h-[40vh] bg-gradient-to-t from-white/60 via-white/30 to-transparent rounded-full absolute blur-[30px] mix-blend-screen"></div>
+            <div className="w-[70vw] h-[35vh] bg-gradient-to-t from-white/50 via-white/25 to-transparent rounded-full absolute left-[5vw] blur-[40px] mix-blend-screen"></div>
           </div>
         </motion.div>
       </div>
       
-      <div className="container mx-auto px-4 z-10">
+      {/* Content */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2.5 }}
+        className="container mx-auto px-4 z-10"
+      >
         <div className="text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 2.8 }}
             className="text-5xl md:text-7xl font-bold mb-6 text-white"
           >
             Dream. Build. <span className="text-hackathon-lightPurple">Innovate.</span>
@@ -112,7 +127,7 @@ const HeroSection = () => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 3 }}
             className="text-xl md:text-2xl mb-8 text-white/90"
           >
             Join the ultimate high school business hackathon where ideas become reality
@@ -121,7 +136,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 3.2 }}
           >
             <Button 
               size="lg" 
@@ -131,7 +146,7 @@ const HeroSection = () => {
             </Button>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
