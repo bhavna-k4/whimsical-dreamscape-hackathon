@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -18,6 +17,14 @@ const HeroSection = () => {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const createCloudStyle = (index: number) => ({
+    top: `${Math.sin(index * 0.5) * 30 + 50}%`,
+    left: `${Math.cos(index * 0.5) * 30 + 50}%`,
+    width: `${Math.random() * 40 + 30}vh`,
+    height: `${Math.random() * 40 + 30}vh`,
+    opacity: Math.random() * 0.4 + 0.6,
+  });
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
@@ -46,25 +53,30 @@ const HeroSection = () => {
         <motion.div 
           initial={{ x: 0, opacity: 1 }}
           animate={isLoaded ? { x: "-120%", opacity: 0 } : { x: 0, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          transition={{ duration: 3, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
           className="fixed inset-0 w-[120%] h-screen z-30"
         >
           <div className="relative w-full h-full">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FFDEE2] via-[#E5DEFF]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FFDEE2] via-[#E5DEFF]/90 to-transparent blur-2xl"></div>
             <div className="absolute inset-0">
-              {[...Array(6)].map((_, i) => (
-                <div
+              {[...Array(8)].map((_, i) => (
+                <motion.div
                   key={`left-cloud-${i}`}
                   className="absolute"
-                  style={{
-                    top: `${Math.random() * 100}%`,
-                    left: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 40 + 20}vh`,
-                    height: `${Math.random() * 40 + 20}vh`,
+                  initial={createCloudStyle(i)}
+                  animate={{
+                    y: [0, Math.random() * 20 - 10],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 5 + i,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#E5DEFF] to-transparent blur-[8px] mix-blend-screen"></div>
-                </div>
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-[#FFDEE2]/80 via-[#E5DEFF]/60 to-transparent blur-xl mix-blend-screen"></div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -74,25 +86,30 @@ const HeroSection = () => {
         <motion.div 
           initial={{ x: 0, opacity: 1 }}
           animate={isLoaded ? { x: "120%", opacity: 0 } : { x: 0, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          transition={{ duration: 3, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
           className="fixed inset-0 w-[120%] h-screen z-30"
         >
           <div className="relative w-full h-full">
-            <div className="absolute inset-0 bg-gradient-to-l from-[#D6BCFA] via-[#FFDEE2]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-l from-[#D6BCFA] via-[#FFDEE2]/90 to-transparent blur-2xl"></div>
             <div className="absolute inset-0">
-              {[...Array(6)].map((_, i) => (
-                <div
+              {[...Array(8)].map((_, i) => (
+                <motion.div
                   key={`right-cloud-${i}`}
                   className="absolute"
-                  style={{
-                    top: `${Math.random() * 100}%`,
-                    right: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 40 + 20}vh`,
-                    height: `${Math.random() * 40 + 20}vh`,
+                  initial={createCloudStyle(i)}
+                  animate={{
+                    y: [0, Math.random() * 20 - 10],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 4 + i,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent blur-[8px] mix-blend-screen"></div>
-                </div>
+                  <div className="w-full h-full rounded-full bg-gradient-to-bl from-[#D6BCFA]/80 via-[#E5DEFF]/60 to-transparent blur-xl mix-blend-screen"></div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -102,25 +119,30 @@ const HeroSection = () => {
         <motion.div 
           initial={{ y: 0, opacity: 1 }}
           animate={isLoaded ? { y: "-120%", opacity: 0 } : { y: 0, opacity: 1 }}
-          transition={{ duration: 2.5, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
+          transition={{ duration: 3, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
           className="fixed inset-0 w-screen h-[120%] z-30"
         >
           <div className="relative w-full h-full">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2]/90 to-transparent blur-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2]/90 to-transparent blur-2xl"></div>
             <div className="absolute inset-0">
-              {[...Array(6)].map((_, i) => (
-                <div
+              {[...Array(8)].map((_, i) => (
+                <motion.div
                   key={`top-cloud-${i}`}
                   className="absolute"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    width: `${Math.random() * 40 + 20}vh`,
-                    height: `${Math.random() * 40 + 20}vh`,
+                  initial={createCloudStyle(i)}
+                  animate={{
+                    y: [0, Math.random() * 20 - 10],
+                    scale: [1, 1.15, 1],
+                  }}
+                  transition={{
+                    duration: 6 + i,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2] to-transparent blur-[8px] mix-blend-screen"></div>
-                </div>
+                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#E5DEFF]/80 via-[#FFDEE2]/60 to-transparent blur-xl mix-blend-screen"></div>
+                </motion.div>
               ))}
             </div>
           </div>
