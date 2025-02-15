@@ -151,30 +151,31 @@ const HeroSection = () => {
 
       {/* Floating Clouds */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Center Clouds */}
+        {/* Upper Right Edge Cloud */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2, ease: "easeOut", delay: 2.8 }}
-          className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2"
+          className="absolute right-[10%] top-[15%]"
         >
           <div className="cloud-group">
-            <div className="w-56 h-56 rounded-full bg-gradient-to-br from-[#E5DEFF]/60 via-[#FFDEE2]/40 to-transparent absolute blur-xl mix-blend-screen"></div>
-            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#D6BCFA]/50 via-[#E5DEFF]/30 to-transparent absolute -top-10 left-16 blur-xl mix-blend-screen"></div>
-            <div className="w-52 h-52 rounded-full bg-gradient-to-br from-[#FFDEE2]/40 via-[#FDE1D3]/30 to-transparent absolute top-6 left-20 blur-xl mix-blend-screen"></div>
+            <div className="w-56 h-56 rounded-full bg-gradient-to-bl from-[#E5DEFF]/60 via-[#FFDEE2]/40 to-transparent absolute blur-xl mix-blend-screen"></div>
+            <div className="w-48 h-48 rounded-full bg-gradient-to-bl from-[#D6BCFA]/50 via-[#E5DEFF]/30 to-transparent absolute -top-10 right-16 blur-xl mix-blend-screen"></div>
+            <div className="w-52 h-52 rounded-full bg-gradient-to-bl from-[#FFDEE2]/40 via-[#FDE1D3]/30 to-transparent absolute top-6 right-20 blur-xl mix-blend-screen"></div>
           </div>
         </motion.div>
 
+        {/* Lower Left Edge Cloud */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2, ease: "easeOut", delay: 3 }}
-          className="absolute left-[20%] top-2/3 -translate-y-1/2"
+          className="absolute left-[10%] bottom-[15%]"
         >
           <div className="cloud-group">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-bl from-[#FFDEE2]/50 via-[#E5DEFF]/40 to-transparent absolute blur-xl mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-bl from-[#D6BCFA]/40 via-[#FFDEE2]/30 to-transparent absolute -top-8 left-12 blur-xl mix-blend-screen"></div>
-            <div className="w-44 h-44 rounded-full bg-gradient-to-bl from-[#E5DEFF]/30 via-[#FFDEE2]/20 to-transparent absolute top-4 left-16 blur-xl mix-blend-screen"></div>
+            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#FFDEE2]/50 via-[#E5DEFF]/40 to-transparent absolute blur-xl mix-blend-screen"></div>
+            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#D6BCFA]/40 via-[#FFDEE2]/30 to-transparent absolute -bottom-8 left-12 blur-xl mix-blend-screen"></div>
+            <div className="w-44 h-44 rounded-full bg-gradient-to-br from-[#E5DEFF]/30 via-[#FFDEE2]/20 to-transparent absolute bottom-4 left-16 blur-xl mix-blend-screen"></div>
           </div>
         </motion.div>
 
