@@ -157,17 +157,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2, ease: "easeOut", delay: 2.5 }}
-          className="absolute left-[-5%] top-[20%] flex gap-8"
+          className="absolute left-[-10%] top-[20%] flex gap-8"
         >
           <div className="cloud-group">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute -top-8 left-12 blur-[12px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute top-4 left-16 blur-[12px] mix-blend-screen"></div>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute -top-8 left-12 blur-[8px] mix-blend-screen"></div>
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute top-4 left-16 blur-[8px] mix-blend-screen"></div>
           </div>
           <div className="cloud-group translate-y-12">
-            <div className="w-44 h-44 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-10 left-14 blur-[12px] mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute top-6 left-20 blur-[12px] mix-blend-screen"></div>
+            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-10 left-14 blur-[8px] mix-blend-screen"></div>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute top-6 left-20 blur-[8px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
@@ -177,17 +177,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 2, ease: "easeOut", delay: 2 }}
-          className="absolute right-[-5%] top-[30%] flex gap-8"
+          className="absolute right-[-10%] top-[30%] flex gap-8"
         >
           <div className="cloud-group">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -top-12 right-16 blur-[12px] mix-blend-screen"></div>
-            <div className="w-44 h-44 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-8 right-20 blur-[12px] mix-blend-screen"></div>
+            <div className="w-40 h-40 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -top-12 right-16 blur-[8px] mix-blend-screen"></div>
+            <div className="w-36 h-36 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-8 right-20 blur-[8px] mix-blend-screen"></div>
           </div>
           <div className="cloud-group -translate-y-16">
-            <div className="w-44 h-44 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-8 right-12 blur-[12px] mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-4 right-16 blur-[12px] mix-blend-screen"></div>
+            <div className="w-36 h-36 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-28 h-28 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-8 right-12 blur-[8px] mix-blend-screen"></div>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-4 right-16 blur-[8px] mix-blend-screen"></div>
           </div>
         </motion.div>
 
@@ -197,17 +197,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 2, ease: "easeOut", delay: 2.2 }}
-          className="absolute left-1/2 bottom-[-5%] transform -translate-x-1/2 flex gap-6"
+          className="absolute left-1/2 bottom-[-10%] transform -translate-x-1/2 flex gap-6"
         >
           <div className="cloud-group">
-            <div className="w-52 h-52 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-44 h-44 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -bottom-8 left-16 blur-[12px] mix-blend-screen"></div>
-            <div className="w-48 h-48 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-4 left-20 blur-[12px] mix-blend-screen"></div>
+            <div className="w-44 h-44 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-36 h-36 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -bottom-8 left-16 blur-[8px] mix-blend-screen"></div>
+            <div className="w-40 h-40 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-4 left-20 blur-[8px] mix-blend-screen"></div>
           </div>
           <div className="cloud-group translate-y-8">
-            <div className="w-48 h-48 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[12px] mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -bottom-6 left-12 blur-[12px] mix-blend-screen"></div>
-            <div className="w-44 h-44 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-2 left-16 blur-[12px] mix-blend-screen"></div>
+            <div className="w-40 h-40 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
+            <div className="w-32 h-32 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -bottom-6 left-12 blur-[8px] mix-blend-screen"></div>
+            <div className="w-36 h-36 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-2 left-16 blur-[8px] mix-blend-screen"></div>
           </div>
         </motion.div>
       </div>
