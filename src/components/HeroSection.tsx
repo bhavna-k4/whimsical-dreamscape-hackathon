@@ -39,6 +39,40 @@ const HeroSection = () => {
           animation: 'twinkle 4s infinite alternate',
         }}
       ></div>
+
+      {/* Reveal Clouds */}
+      <motion.div 
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.5, delay: 1 }}
+        className="absolute inset-0 pointer-events-none"
+      >
+        <div className="absolute inset-0">
+          {/* Left Cloud */}
+          <div className="absolute left-0 inset-y-0 w-1/2">
+            <motion.div 
+              initial={{ x: 0 }}
+              animate={{ x: "-100%" }}
+              transition={{ duration: 1.5, delay: 1, ease: "easeOut" }}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-gradient-to-r from-[#1A1F2C] via-[#1A1F2C]/90 to-transparent"></div>
+            </motion.div>
+          </div>
+
+          {/* Right Cloud */}
+          <div className="absolute right-0 inset-y-0 w-1/2">
+            <motion.div 
+              initial={{ x: 0 }}
+              animate={{ x: "100%" }}
+              transition={{ duration: 1.5, delay: 1, ease: "easeOut" }}
+              className="w-full h-full"
+            >
+              <div className="w-full h-full bg-gradient-to-l from-[#1A1F2C] via-[#1A1F2C]/90 to-transparent"></div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
       
       {/* Content */}
       <motion.div 
