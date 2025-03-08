@@ -11,13 +11,18 @@ const HeroSection = () => {
     offset: ["start start", "end start"]
   });
 
-  // Changed transform values to create a zoom/depth effect rather than lateral movement
+  // Enhanced transform values for deeper zoom effect
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
   const opacityProgress = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const blurProgress = useTransform(scrollYProgress, [0, 0.8], [0, 10]);
-  const starScaleProgress = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const starOpacityProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
-
+  
+  // Enhanced star effects for deeper zoom feeling
+  const starScaleProgress = useTransform(scrollYProgress, [0, 1], [1, 2.5]);
+  const starOpacityProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
+  
+  // New transform for the star field to create a tunnel effect
+  const starZProgress = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  
   useEffect(() => {
     setIsLoaded(true);
   }, []);
@@ -32,12 +37,13 @@ const HeroSection = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
-      {/* Stars background with depth effect */}
+      {/* Enhanced Stars background with depth/tunnel effect */}
       <motion.div 
         className="absolute inset-0" 
         style={{
           scale: starScaleProgress,
           opacity: starOpacityProgress,
+          z: starZProgress,
           background: `
             radial-gradient(circle at 20% 30%, #ffffff 1px, transparent 1px),
             radial-gradient(circle at 40% 70%, #ffffff 1.2px, transparent 1.2px),
@@ -50,14 +56,17 @@ const HeroSection = () => {
           `,
           backgroundSize: '200px 200px',
           animation: 'twinkle 4s infinite alternate',
+          perspective: '1000px',
+          transformStyle: 'preserve-3d',
         }}
       ></motion.div>
       
-      {/* Deep space background effect */}
+      {/* Deep space background with enhanced depth effect */}
       <motion.div 
         className="absolute inset-0 bg-gradient-radial from-transparent via-[#1A1F2C]/40 to-[#1A1F2C]/80"
         style={{
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.5]),
+          scale: useTransform(scrollYProgress, [0, 1], [1, 1.8]),
+          transformOrigin: 'center center',
         }}
       ></motion.div>
       
@@ -176,9 +185,9 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      {/* Floating particles with depth effect */}
+      {/* Enhanced floating particles with depth effect */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute rounded-full bg-white/20"
@@ -190,8 +199,13 @@ const HeroSection = () => {
               opacity: Math.random() * 0.7 + 0.3,
             }}
             animate={{
-              z: [0, Math.random() * 300 - 150],
-              scale: [1, Math.random() * 1.5 + 0.5, 1],
+              z: [0, Math.random() * 500 - 250],
+              scale: [1, Math.random() * 2 + 0.5, 1],
+              opacity: [
+                Math.random() * 0.5 + 0.3,
+                Math.random() * 0.8 + 0.2,
+                Math.random() * 0.5 + 0.3
+              ],
             }}
             transition={{
               duration: 8 + i * 2,
