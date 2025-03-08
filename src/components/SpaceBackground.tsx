@@ -1,6 +1,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface SpaceBackgroundProps {
   children: React.ReactNode;
@@ -8,25 +8,55 @@ interface SpaceBackgroundProps {
 
 const SpaceBackground = ({ children }: SpaceBackgroundProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
+  // Track scroll position in document instead of relative to component
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      
+      // Calculate global scroll progress (0 to 1)
+      const progress = scrollTop / (documentHeight - windowHeight);
+      setScrollProgress(progress);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  // Enhanced star effects for continuous zoom feeling
-  const starScaleProgress = useTransform(scrollYProgress, [0, 1], [1, 3]);
-  const starOpacityProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6]);
-  const starZProgress = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  // Enhanced star effects for continuous zoom feeling based on global scroll
+  const starScaleProgress = useTransform(
+    () => Math.min(1 + scrollProgress * 2, 3),
+    (value) => value
+  );
+  
+  const starOpacityProgress = useTransform(
+    () => {
+      if (scrollProgress < 0.5) {
+        return 1 - scrollProgress * 0.4;
+      } else {
+        return 0.8 - (scrollProgress - 0.5) * 0.4;
+      }
+    },
+    (value) => value
+  );
+  
+  const starZProgress = useTransform(
+    () => -150 * scrollProgress,
+    (value) => value
+  );
 
   return (
     <div ref={containerRef} className="relative py-20 min-h-screen flex items-center overflow-hidden bg-[#1A1F2C]">
       {/* Distant stars layer (smaller, moves slower) */}
       <motion.div 
-        className="absolute inset-0" 
+        className="absolute inset-0 pointer-events-none" 
         style={{
-          scale: useTransform(scrollYProgress, [0, 1], [1, 2]),
+          scale: useTransform(() => 1 + scrollProgress, (value) => value),
           opacity: starOpacityProgress,
-          z: useTransform(scrollYProgress, [0, 1], [0, -50]),
+          z: useTransform(() => -50 * scrollProgress, (value) => value),
           background: `
             radial-gradient(circle at 15% 25%, #ffffff 0.6px, transparent 0.6px),
             radial-gradient(circle at 35% 65%, #ffffff 0.7px, transparent 0.7px),
@@ -45,7 +75,7 @@ const SpaceBackground = ({ children }: SpaceBackgroundProps) => {
 
       {/* Middle stars layer (medium size, medium speed) */}
       <motion.div 
-        className="absolute inset-0" 
+        className="absolute inset-0 pointer-events-none" 
         style={{
           scale: starScaleProgress,
           opacity: starOpacityProgress,
@@ -68,11 +98,17 @@ const SpaceBackground = ({ children }: SpaceBackgroundProps) => {
 
       {/* Close stars layer (larger, moves faster) */}
       <motion.div 
-        className="absolute inset-0" 
+        className="absolute inset-0 pointer-events-none" 
         style={{
-          scale: useTransform(scrollYProgress, [0, 1], [1, 4]),
-          opacity: useTransform(scrollYProgress, [0, 0.3, 1], [0.6, 0.4, 0.2]),
-          z: useTransform(scrollYProgress, [0, 1], [0, -200]),
+          scale: useTransform(() => 1 + scrollProgress * 3, (value) => value),
+          opacity: useTransform(() => {
+            if (scrollProgress < 0.3) {
+              return 0.6 - scrollProgress * 0.66;
+            } else {
+              return 0.4 - (scrollProgress - 0.3) * 0.5;
+            }
+          }, (value) => value),
+          z: useTransform(() => -200 * scrollProgress, (value) => value),
           background: `
             radial-gradient(circle at 25% 35%, #ffffff 1.4px, transparent 1.4px),
             radial-gradient(circle at 45% 75%, #ffffff 1.6px, transparent 1.6px),
@@ -91,19 +127,54 @@ const SpaceBackground = ({ children }: SpaceBackgroundProps) => {
 
       {/* Deep space background gradient */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-radial from-transparent via-[#1A1F2C]/40 to-[#1A1F2C]/80"
+        className="absolute inset-0 bg-gradient-radial from-transparent via-[#1A1F2C]/40 to-[#1A1F2C]/80 pointer-events-none"
         style={{
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.8]),
+          scale: useTransform(() => 1 + scrollProgress * 0.8, (value) => value),
           transformOrigin: 'center center',
         }}
       ></motion.div>
+
+      {/* Generate new stars as you scroll deeper */}
+      <motion.div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(40)].map((_, i) => {
+          // Create stars with different depths
+          const depth = Math.random();
+          const size = depth * 3 + 0.5;
+          const initialPos = Math.random() * 100;
+          
+          return (
+            <motion.div
+              key={`scroll-star-${i}`}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: size + 'px',
+                height: size + 'px',
+                left: `${initialPos}%`,
+                top: `${(initialPos * 7) % 100}%`,
+                opacity: depth * 0.5 + 0.1,
+                // This creates the effect of stars appearing far away and moving toward the viewer
+                scale: useTransform(() => {
+                  const offset = (i / 40); // Distribute star appearance
+                  const starProgress = (scrollProgress * 3 + offset) % 1;
+                  return Math.max(0.1, Math.min(1, starProgress * 2)) * size / 2;
+                }, value => value),
+                zIndex: useTransform(() => {
+                  const offset = (i / 40);
+                  const starProgress = (scrollProgress * 3 + offset) % 1;
+                  return Math.floor(starProgress * 10);
+                }, value => value)
+              }}
+            />
+          );
+        })}
+      </motion.div>
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4">
         {children}
       </div>
 
-      {/* Enhanced floating particles with varying depths */}
+      {/* Enhanced floating particles with varying depths - persistent across sections */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[...Array(30)].map((_, i) => {
           // Create varying depths of stars
