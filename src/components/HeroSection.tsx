@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -10,9 +11,12 @@ const HeroSection = () => {
     offset: ["start start", "end start"]
   });
 
-  const leftX = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const rightX = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const centerY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  // Changed transform values to create a zoom/depth effect rather than lateral movement
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const blurProgress = useTransform(scrollYProgress, [0, 0.8], [0, 10]);
+  const starScaleProgress = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const starOpacityProgress = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -28,10 +32,12 @@ const HeroSection = () => {
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1F2C]">
-      {/* Stars background */}
-      <div 
+      {/* Stars background with depth effect */}
+      <motion.div 
         className="absolute inset-0" 
         style={{
+          scale: starScaleProgress,
+          opacity: starOpacityProgress,
           background: `
             radial-gradient(circle at 20% 30%, #ffffff 1px, transparent 1px),
             radial-gradient(circle at 40% 70%, #ffffff 1.2px, transparent 1.2px),
@@ -45,7 +51,15 @@ const HeroSection = () => {
           backgroundSize: '200px 200px',
           animation: 'twinkle 4s infinite alternate',
         }}
-      ></div>
+      ></motion.div>
+      
+      {/* Deep space background effect */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-radial from-transparent via-[#1A1F2C]/40 to-[#1A1F2C]/80"
+        style={{
+          scale: useTransform(scrollYProgress, [0, 1], [1, 1.5]),
+        }}
+      ></motion.div>
       
       {/* Initial Cloud Cover */}
       <AnimatePresence>
@@ -114,106 +128,15 @@ const HeroSection = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Top Cover Cloud */}
-        <motion.div 
-          initial={{ y: 0, opacity: 1 }}
-          animate={isLoaded ? { y: "-120%", opacity: 0 } : { y: 0, opacity: 1 }}
-          transition={{ duration: 3, ease: [0.4, 0, 0.2, 1], delay: 0.5 }}
-          className="fixed inset-0 w-screen h-[120%] z-30"
-        >
-          <div className="relative w-full h-full">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#E5DEFF] via-[#FFDEE2]/90 to-transparent blur-2xl"></div>
-            <div className="absolute inset-0">
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={`top-cloud-${i}`}
-                  className="absolute"
-                  initial={createCloudStyle(i)}
-                  animate={{
-                    y: [0, Math.random() * 20 - 10],
-                    scale: [1, 1.15, 1],
-                  }}
-                  transition={{
-                    duration: 6 + i,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  }}
-                >
-                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#E5DEFF]/80 via-[#FFDEE2]/60 to-transparent blur-xl mix-blend-screen"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </AnimatePresence>
-
-      {/* Floating Clouds */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Left Side Clouds */}
-        <motion.div 
-          style={{ x: leftX }}
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 2.5 }}
-          className="absolute left-[-10%] top-[20%] flex gap-8"
-        >
-          <div className="cloud-group">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute -top-8 left-12 blur-[8px] mix-blend-screen"></div>
-            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute top-4 left-16 blur-[8px] mix-blend-screen"></div>
-          </div>
-          <div className="cloud-group translate-y-12">
-            <div className="w-36 h-36 rounded-full bg-gradient-to-br from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-10 left-14 blur-[8px] mix-blend-screen"></div>
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute top-6 left-20 blur-[8px] mix-blend-screen"></div>
-          </div>
-        </motion.div>
-
-        {/* Right Side Clouds */}
-        <motion.div 
-          style={{ x: rightX }}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 2 }}
-          className="absolute right-[-10%] top-[30%] flex gap-8"
-        >
-          <div className="cloud-group">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-32 h-32 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -top-12 right-16 blur-[8px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-8 right-20 blur-[8px] mix-blend-screen"></div>
-          </div>
-          <div className="cloud-group -translate-y-16">
-            <div className="w-36 h-36 rounded-full bg-gradient-to-bl from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-28 h-28 rounded-full bg-gradient-to-bl from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -top-8 right-12 blur-[8px] mix-blend-screen"></div>
-            <div className="w-32 h-32 rounded-full bg-gradient-to-bl from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute top-4 right-16 blur-[8px] mix-blend-screen"></div>
-          </div>
-        </motion.div>
-
-        {/* Bottom Clouds */}
-        <motion.div 
-          style={{ y: centerY }}
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 2.2 }}
-          className="absolute left-1/2 bottom-[-10%] transform -translate-x-1/2 flex gap-6"
-        >
-          <div className="cloud-group">
-            <div className="w-44 h-44 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute -bottom-8 left-16 blur-[8px] mix-blend-screen"></div>
-            <div className="w-40 h-40 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-4 left-20 blur-[8px] mix-blend-screen"></div>
-          </div>
-          <div className="cloud-group translate-y-8">
-            <div className="w-40 h-40 rounded-full bg-gradient-to-t from-[#FFDEE2] via-[#FDE1D3] to-transparent absolute blur-[8px] mix-blend-screen"></div>
-            <div className="w-32 h-32 rounded-full bg-gradient-to-t from-[#D6BCFA] via-[#E5DEFF] to-transparent absolute -bottom-6 left-12 blur-[8px] mix-blend-screen"></div>
-            <div className="w-36 h-36 rounded-full bg-gradient-to-t from-[#E5DEFF] via-[#FFDEE2] to-transparent absolute bottom-2 left-16 blur-[8px] mix-blend-screen"></div>
-          </div>
-        </motion.div>
-      </div>
       
       {/* Content */}
       <motion.div 
+        style={{
+          scale: scaleProgress,
+          opacity: opacityProgress,
+          filter: `blur(${blurProgress}px)`,
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 3 }}
@@ -252,6 +175,33 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Floating particles with depth effect */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute rounded-full bg-white/20"
+            style={{
+              width: Math.random() * 4 + 1 + 'px',
+              height: Math.random() * 4 + 1 + 'px',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.7 + 0.3,
+            }}
+            animate={{
+              z: [0, Math.random() * 300 - 150],
+              scale: [1, Math.random() * 1.5 + 0.5, 1],
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
